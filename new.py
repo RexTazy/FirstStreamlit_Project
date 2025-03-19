@@ -1,40 +1,34 @@
-# Streamlit App for Machine Learning Model Prediction
+# Streamlit App for Machine Learning Model Deployment
 import streamlit as st
-import json
 import numpy as np
 
-# Placeholder function to simulate loading a machine learning model
-def load_model():
-    # Replace this with actual model loading logic
-    st.write("Model loaded successfully!")
-    return "dummy_model"
-
-# Placeholder function to simulate making predictions
-def predict(model, input_data):
-    # Replace this with actual prediction logic
-    return np.random.choice(["Class 1", "Class 2", "Class 3"])
+# Placeholder function to simulate model prediction
+def predict(sepal_length, sepal_width, petal_length, petal_width):
+    # Replace this with actual model prediction logic
+    # For now, it randomly predicts one of the Iris species
+    species = np.random.choice(["Iris-setosa", "Iris-versicolor", "Iris-virginica"])
+    return species
 
 def main():
-    st.title("Machine Learning Model Prediction")
+    st.title("Machine Learning Model Deployment")
 
-    # Load the model
-    model = load_model()
+    # Input fields for features
+    st.header("Input Features")
+    sepal_length = st.number_input("sepal_length", value=3.28)
+    sepal_width = st.number_input("sepal_width", value=4.72)
+    petal_length = st.number_input("petal_length", value=3.05)
+    petal_width = st.number_input("petal_width", value=2.12)
 
-    # Add input components for features
-    st.sidebar.header("Input Features")
-    feature1 = st.sidebar.slider("Feature 1", min_value=0.0, max_value=1.0, value=0.5)
-    feature2 = st.sidebar.slider("Feature 2", min_value=0.0, max_value=1.0, value=0.5)
-    feature3 = st.sidebar.slider("Feature 3", min_value=0.0, max_value=1.0, value=0.5)
-    feature4 = st.sidebar.slider("Feature 4", min_value=0.0, max_value=1.0, value=0.5)
-    feature5 = st.sidebar.slider("Feature 5", min_value=0.0, max_value=1.0, value=0.5)
-
-    # Prepare input data for prediction
-    input_data = np.array([feature1, feature2, feature3, feature4, feature5]).reshape(1, -1)
-
-    # Make prediction
-    if st.sidebar.button("Predict"):
-        result = predict(model, input_data)
-        st.success(f"The prediction is: {result}")
+    # Make Prediction button
+    if st.button("Make Prediction"):
+        # Prepare input data
+        input_data = np.array([sepal_length, sepal_width, petal_length, petal_width]).reshape(1, -1)
+        
+        # Get prediction
+        prediction = predict(sepal_length, sepal_width, petal_length, petal_width)
+        
+        # Display prediction
+        st.success(f"The prediction is: {prediction}")
 
 if __name__ == '__main__':
     main()
