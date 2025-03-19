@@ -1,4 +1,3 @@
-# Streamlit App for Machine Learning Model Deployment
 import streamlit as st
 import numpy as np
 
@@ -10,14 +9,14 @@ def predict(sepal_length, sepal_width, petal_length, petal_width):
     return species
 
 def main():
-    st.title("Machine Learning Model Deployment")
+    st.title("Project Model Deployment")
 
     # Input fields for features
     st.header("Input Features")
-    sepal_length = st.number_input("sepal_length", value=3.28)
-    sepal_width = st.number_input("sepal_width", value=4.72)
-    petal_length = st.number_input("petal_length", value=3.05)
-    petal_width = st.number_input("petal_width", value=2.12)
+    sepal_length = st.slider("sepal_length", min_value=0.0, max_value=10.0, value=3.28, step=0.01)
+    sepal_width = st.slider("sepal_width", min_value=0.0, max_value=10.0, value=4.72, step=0.01)
+    petal_length = st.slider("petal_length", min_value=0.0, max_value=10.0, value=3.05, step=0.01)
+    petal_width = st.slider("petal_width", min_value=0.0, max_value=10.0, value=2.12, step=0.01)
 
     # Make Prediction button
     if st.button("Make Prediction"):
