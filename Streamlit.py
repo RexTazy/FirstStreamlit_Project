@@ -1,4 +1,3 @@
-# rf_streamlit.py
 import streamlit as st
 import joblib
 import numpy as np
@@ -15,7 +14,7 @@ def main():
     patal_length = st.slider('patal_length', min_value=0.0, max_value=10.0, value=0.1)
     patal_width = st.slider('patal_width', min_value=0.0, max_value=10.0, value=0.1)
 
-    if st.button('Make Prediction');
+    if st.button('Make Prediction'):
         features = [sepal_length,sepal_width,patal_length,patal_width]
         result = make_prediction(features)
         st.success(f'The prediction is: {result}')
